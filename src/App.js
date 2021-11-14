@@ -1,12 +1,13 @@
 import './App.css';
+import SleepForm from './components/SleepForm';
 
 const App = () => {
 
   return (
     <div className="App">
-      <div>Hi</div>
+      <SleepForm/>
     </div>
   );
 }
-// #282c34
+
 export default App;
