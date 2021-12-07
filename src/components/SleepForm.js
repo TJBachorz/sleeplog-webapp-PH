@@ -1,5 +1,5 @@
 import React from 'react';
-import { useFormik } from 'formik';
+import { Field, Formik, useFormik } from 'formik';
 import { yesterday } from '../utils/dateConstants';
 
 import Select from '../Reusables/Select';
@@ -7,7 +7,7 @@ import dayjs from 'dayjs';
 
 const SleepForm = () => {
 
-    console.log(yesterday.daysInMonth())
+    console.log(yesterday.year())
 
     const formik = useFormik({
         initialValues: {
@@ -28,25 +28,27 @@ const SleepForm = () => {
             userId: '',
             notes: '',
         },
-        onSubmit: values => {
-            console.log(values)
-        }
     })
 
-    const submitSleeplog = e => {
-        e.preventDefault();
-        console.log("SUBMITTING SLEEPLOG")
+    const submitSleeplog = values => {
+        console.log(values)
+        console.log(values, "SUBMITTING SLEEPLOG")
     }
 
     return (
-        <form onSubmit={formik.handleSubmit}>
-            <div>
-                {/* <Select name="nightOfDateMonth" type="text" value={[1,12]} options={[12]}/>
-                <Select name="nightOfDateDay" type="text" value={[1,31]} options={[1-30]}/>
-                <Select name="nightOfDateYear" type="text" value={[2021]} options={[1-30]}/> */}
-            </div>
-            <button>Submit</button>
-        </form>
+        <Formik
+            initialValues={formik.initialValues}
+            onSubmit={submitSleeplog}
+        >
+            {props => (<form onSubmit={props.handleSubmit}>
+                <div>
+                    <Select name="nightOfDateMonth" onChange={props.handleChange} type="text" value={12} options={[1,2,3,4,5,6,12]}/>
+                    <Select name="nightOfDateDay" type="text" value={20} options={[1,2,3,4,5,30]}/>
+                    <Field name="nightOfDateYear" type="text" value={yesterday.year()}/>
+                </div>
+                <button type="submit">Submit</button>
+            </form>)}
+        </Formik>
     )
 }
 

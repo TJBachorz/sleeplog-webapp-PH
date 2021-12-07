@@ -3,6 +3,7 @@ import { Field } from 'formik';
 
 const Select = ({
     name,
+    onChange,
     options,
     type,
     value
@@ -11,6 +12,7 @@ const Select = ({
         <Field
             as="select"
             name={name}
+            onChange={onChange}
             type={type}
             value={value}
         >
