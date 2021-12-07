@@ -1,5 +1,7 @@
 import React from 'react';
-import { Field, useFormik } from 'formik';
+import { useFormik } from 'formik';
+
+import Select from '../Reusables/Select';
 
 const SleepForm = () => {
 
@@ -33,10 +35,6 @@ const SleepForm = () => {
     return (
         <form onSubmit={formik.handleSubmit}>
             <div>
-                <Field
-                    name=
-                    as="select"
-                />
             </div>
             <button>Submit</button>
         </form>
