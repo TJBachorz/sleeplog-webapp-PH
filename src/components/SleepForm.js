@@ -1,8 +1,8 @@
 import React from 'react';
-import { useFormik } from 'formik';
+import { Field, useFormik } from 'formik';
 
 const SleepForm = () => {
-    
+
     const formik = useFormik({
         initialValues: {
             nightOfDate: '',
@@ -15,6 +15,7 @@ const SleepForm = () => {
             wakeUpTime: '',
             ateSpicy: false,
             drankAlcohol: false,
+            useMarijuana: false,            
             sleepMeds: false,
             userId: '',
             notes: '',
@@ -30,8 +31,13 @@ const SleepForm = () => {
     }
 
     return (
-        <form onSubmit={submitSleeplog}>
-            <div>TEST SLEEP LOG</div>
+        <form onSubmit={formik.handleSubmit}>
+            <div>
+                <Field
+                    name=
+                    as="select"
+                />
+            </div>
             <button>Submit</button>
         </form>
     )
